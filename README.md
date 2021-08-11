@@ -54,7 +54,9 @@ _**VisitVA** is an app where users can make posts on different attractions in Vi
 
 #### Wireframes
 
-[Wireframe](https://www.figma.com/file/uPV04SFiu3zHM5FfHy5SmK/VisitVA?node-id=0%3A1)
+[Desktop](https://www.figma.com/file/uPV04SFiu3zHM5FfHy5SmK/VisitVA?node-id=0%3A1)
+
+[Mobile](https://www.figma.com/file/0Xs8zfGdfh0SGIN1e31zoJ/Untitled?node-id=0%3A1)
 
 
 #### Component Tree
