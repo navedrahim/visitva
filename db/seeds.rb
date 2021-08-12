@@ -6,12 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#users
+Comment.destroy_all
+Post.destroy_all
+User.destroy_all
+
+# users
 
 user1 = User.create(username: 'valover', email: 'valover@email.com', password_digest: '123456')
-
 user2 = User.create(username: 'touristguy', email: 'touristguy@email.com', password_digest: 'abc123')
 
-#user1 posts
+pp "#{User.count} users created"
 
-Post.create(imageURL: 'https://i.imgur.com/udstHYb.jpg', name: 'Luray Caverns', location: 'Luray', description: 'Luray Caverns contain breathtaking examples of calcite formations within an extensive underground system that sometimes feels more like an alien landscape than a terrestrial natural landmark.')
+# posts user1
+
+Post.create(imageURL: 'https://i.imgur.com/udstHYb.jpg', name: 'Luray Caverns', location: 'Luray', description: 'Luray Caverns contain breathtaking examples of calcite formations within an extensive underground system that sometimes feels more like an alien landscape than a terrestrial natural landmark.', user: user1)
+Post.create(imageURL: 'https://i.imgur.com/KAoOWC6.jpg', name: 'Chincoteague Island', location: 'Chincoteague', description: 'Watch the wild Chincoteague ponies cross the Assateague Channel to Chincoteague Island', user: user1)
+
+# posts user2
+
+busch = Post.create(imageURL: 'https://i.imgur.com/FqbK8Ut.jpg', name: 'Busch Gardens', location: 'Williamsburg', description: 'This European themed park has rides and entertainment that is fun for the whole family', user: user2)
+
+pp "#{Post.count} posts created"
+
+# comments user1
+Comment.create(content: 'I made sure to ride each roller coaster twice!', user: user1, post: busch)
+
+pp "#{Comment.count} comments created"
