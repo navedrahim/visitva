@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getPosts } from "../../services/posts.js";
+import { Link } from "react-router-dom";
 
 function PostList(props) {
   const [posts, setPosts] = useState([]);
@@ -16,8 +17,10 @@ function PostList(props) {
     <div className="post-container">
       {posts.map((post) => (
         <div className="post-card" key={post.id}>
-          <img className="picture" src={post.imageURL} alt={post.name} />
-          <div className="post-name">{post.name}</div>
+          <Link to={`/posts/${post.id}`}>
+            <img className="picture" src={post.imageURL} alt={post.name} />
+            <div className="post-name">{post.name}</div>
+          </Link>
         </div>
       ))}
     </div>

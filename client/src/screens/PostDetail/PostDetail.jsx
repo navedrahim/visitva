@@ -16,6 +16,7 @@ function PostDetail(props) {
     fetchPost();
   }, [id]);
 
+
   useEffect(() => {
     const fetchComments = async () => {
       const comments = await getComments(id);
@@ -31,6 +32,13 @@ function PostDetail(props) {
         <div className="post-name">{post.name}</div>
         <div className="post-location">{post.location}</div>
         <div className="post-description">{post.description}</div>
+      </div>
+      <div className="comment-container">
+        {post.comments?.map(comment => (
+          <div key={comment.id} className="comment">
+            {comment.content}-{comment.user.username}
+          </div>
+        ))}
       </div>
     </div>
   );

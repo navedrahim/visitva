@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :authorize_request, only: [:verify]
 
+  def show
+    user = User.find(id)
+    render json: user, status: :ok
+  end
+
   # POST /users
   def create
     user = User.new(user_register_params)
