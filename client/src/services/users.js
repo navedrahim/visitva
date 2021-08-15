@@ -2,6 +2,7 @@ import api from './apiConfig.js';
 
 export const getUser = async (id) =>{
   const res = await api.get(`/users/${id}`)
+  return res.data
 }
 
 export const register = async (userData) =>{

@@ -15,6 +15,12 @@ function PostList(props) {
 
   return (
     <div className="post-container">
+      <div className="missing-something">
+        Can't find what you're looking for?
+        <Link to={"/add"}>
+        <button className="add-post-button">Add Post</button>
+        </Link>
+      </div>
       {posts.map((post) => (
         <div className="post-card" key={post.id}>
           <Link to={`/posts/${post.id}`}>
