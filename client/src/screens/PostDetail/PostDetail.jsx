@@ -36,7 +36,7 @@ function PostDetail(props) {
       <div className="comment-container">
         {post.comments?.map(comment => (
           <div key={comment.id} className="comment">
-            {comment.content}-{comment.user.username}
+            {comment.content}-
           </div>
         ))}
       </div>
