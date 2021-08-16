@@ -12,8 +12,8 @@ User.destroy_all
 
 # users
 
-user1 = User.create(username: 'valover', email: 'valover@email.com', password_digest: '123456')
-user2 = User.create(username: 'touristguy', email: 'touristguy@email.com', password_digest: 'abc123')
+user1 = User.create(username: 'valover', email: 'valover@email.com', password: '123456')
+user2 = User.create(username: 'touristguy', email: 'touristguy@email.com', password: 'abc123')
 
 pp "#{User.count} users created"
 
