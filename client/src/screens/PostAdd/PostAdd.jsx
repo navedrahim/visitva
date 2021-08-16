@@ -9,6 +9,7 @@ const PostAdd = (props) => {
     name: "",
     location: "",
     description: "",
+    user_id: "",
   });
 
   const [isCreated, setCreated] = useState(false);
@@ -18,6 +19,7 @@ const PostAdd = (props) => {
     setPost({
       ...post,
       [name]: value,
+      user_id: props.user.id
     });
   };
 
