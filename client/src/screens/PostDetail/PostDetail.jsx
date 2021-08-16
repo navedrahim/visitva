@@ -1,12 +1,12 @@
 import { getPost, deletePost } from "../../services/posts";
-import { getComments } from "../../services/comments";
+// import { getComments } from "../../services/comments";
 import { useState, useEffect } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import Layout from "../../components/Layout/Layout.jsx";
 
 function PostDetail(props) {
   const [post, setPost] = useState({});
-  const [comments, setComments] = useState([]);
+  // const [comments, setComments] = useState([]);
   const [deleted, setDeleted] = useState(false);
   const { id } = useParams();
 
@@ -18,13 +18,13 @@ function PostDetail(props) {
     fetchPost();
   }, [id]);
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      const comments = await getComments(id);
-      setComments(comments);
-    };
-    fetchComments();
-  }, [id]);
+  // useEffect(() => {
+  //   const fetchComments = async () => {
+  //     const comments = await getComments(id);
+  //     setComments(comments);
+  //   };
+  //   fetchComments();
+  // }, [id]);
 
   const handleDelete = async () => {
     await deletePost(post.id);
