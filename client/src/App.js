@@ -4,6 +4,7 @@ import PostDetail from './screens/PostDetail/PostDetail';
 import Home from './screens/Home/Home';
 import PostAdd from './screens/PostAdd/PostAdd';
 import PostEdit from './screens/PostEdit/PostEdit';
+import SignOut from './screens/SignOut/SignOut';
 import { verify } from "./services/users.js";
 import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -24,6 +25,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home/>
+        </Route>
+        <Route path="sign-out">
+          <SignOut setUser={setUser}/>
         </Route>
         <Route exact path="/posts">
           <PostList/>
