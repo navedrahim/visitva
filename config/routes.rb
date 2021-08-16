@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments
   end
+  get "/users/verify", to: "users#verify"
+  post "/users/login", to: "users#login"
   resources :users
 
-  post "/users/login", to: "users#login"
-  get "/users/verify", to: "users#verify"
 end

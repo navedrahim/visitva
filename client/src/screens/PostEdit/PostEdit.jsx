@@ -1,6 +1,7 @@
 import { editPost, getPost } from "../../services/posts";
 import { useParams, Redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Layout from "../../components/Layout/Layout";
 
 const PostEdit = (props) => {
   const { id } = useParams();
@@ -41,46 +42,48 @@ const PostEdit = (props) => {
   }
 
   return (
-    <div className="post-edit">
-      <form className="edit-form" onSubmit={handleSubmit}>
-        <input
-          className="input-image"
-          placeholder="Image URL"
-          value={post.imageURL}
-          name="imageURL"
-          required
-          autoFocus
-          onChange={handleChange}
-        />
-        <input
-          className="input-name"
-          placeholder="Name"
-          value={post.name}
-          name="name"
-          required
-          onChange={handleChange}
-        />
-        <input
-          className="input-location"
-          placeholder="Location"
-          value={post.location}
-          name="location"
-          required
-          onChange={handleChange}
-        />
-        <input
-          className="input-description"
-          placeholder="Description"
-          value={post.description}
-          name="description"
-          required
-          onChange={handleChange}
-        />
-        <button type="submit" className="submit-button">
-          Submit
-        </button>
-      </form>
-    </div>
+    <Layout user={props.user}>
+      <div className="post-edit">
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <input
+            className="input-image"
+            placeholder="Image URL"
+            value={post.imageURL}
+            name="imageURL"
+            required
+            autoFocus
+            onChange={handleChange}
+          />
+          <input
+            className="input-name"
+            placeholder="Name"
+            value={post.name}
+            name="name"
+            required
+            onChange={handleChange}
+          />
+          <input
+            className="input-location"
+            placeholder="Location"
+            value={post.location}
+            name="location"
+            required
+            onChange={handleChange}
+          />
+          <input
+            className="input-description"
+            placeholder="Description"
+            value={post.description}
+            name="description"
+            required
+            onChange={handleChange}
+          />
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
+        </form>
+      </div>
+    </Layout>
   );
 };
 

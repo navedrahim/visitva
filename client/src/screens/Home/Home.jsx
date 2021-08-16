@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import Layout from "../../components/Layout/Layout.jsx";
 
 function Home(props) {
   return (
+    <Layout user={props.user}>
     <header className="home-header">
       <div className="home-image-container">
         <img src="https://i.imgur.com/dKzMgAV.jpg" alt="beach" />
@@ -14,6 +16,7 @@ function Home(props) {
         </Link>
       </div>
     </header>
+    </Layout>
   )
 }
 

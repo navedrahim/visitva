@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :authorize_request, only: [:verify]
 
   def show
-    user = User.find(id)
-    render json: user, status: :ok
+    @user = User.find(params[:id])
+    render json: @user, status: :ok
   end
 
   # POST /users
