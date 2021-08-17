@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
-// import { useEffect, useState } from "react";
 
+const Nav = ({ user }) => {
 const authenticatedOptions = (
   <>
+    <h4>{`Hello, ${user?.username}!`}</h4>
     <NavLink className="link" to="/add">
       Add Post
     </NavLink>
@@ -31,7 +32,6 @@ const alwaysOptions = (
   </>
 );
 
-const Nav = ({ user }) => {
   return (
     <>
       <nav>

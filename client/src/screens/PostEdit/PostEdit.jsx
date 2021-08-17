@@ -45,6 +45,8 @@ const PostEdit = (props) => {
     <Layout user={props.user}>
       <div className="post-edit">
         <form className="edit-form" onSubmit={handleSubmit}>
+          <div className="image-container">
+            <img class="edit-image" src={post.imageURL} alt={post.name} />
           <input
             className="input-image"
             placeholder="Image URL"
@@ -54,6 +56,7 @@ const PostEdit = (props) => {
             autoFocus
             onChange={handleChange}
           />
+          </div>
           <input
             className="input-name"
             placeholder="Name"

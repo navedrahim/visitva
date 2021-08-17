@@ -1,13 +1,20 @@
 import { getPost, deletePost } from "../../services/posts";
-// import { getComments } from "../../services/comments";
+import { getComments } from "../../services/comments";
+import { createComment } from "../../services/comments";
 import { useState, useEffect } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import Layout from "../../components/Layout/Layout.jsx";
 
 function PostDetail(props) {
   const [post, setPost] = useState({});
-  // const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState({
+    content: "",
+    user_id: "",
+    post_id: "",
+  });
   const [deleted, setDeleted] = useState(false);
+  const [isCreated, setCreated] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -18,13 +25,34 @@ function PostDetail(props) {
     fetchPost();
   }, [id]);
 
-  // useEffect(() => {
-  //   const fetchComments = async () => {
-  //     const comments = await getComments(id);
-  //     setComments(comments);
-  //   };
-  //   fetchComments();
-  // }, [id]);
+  useEffect(() => {
+    const fetchComments = async () => {
+      const comments = await getComments(id);
+      setComments(comments);
+    };
+    fetchComments();
+  }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewComment({
+      ...newComment,
+      [name]: value,
+      user_id: props.user.id,
+      post_id: post.id,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const created = await createComment(newComment);
+    setCreated({ created });
+  };
+
+  if (isCreated) {
+    return <Redirect to={`/posts/${id}`} />;
+  }
+
 
   const handleDelete = async () => {
     await deletePost(post.id);
@@ -56,10 +84,22 @@ function PostDetail(props) {
             Delete
           </button>
         </div>
+        <form className="comment-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="content"
+            placeholder="Comment"
+            value={newComment.content}
+            onChange={handleChange}
+          />
+          <button type="submit" className="submit-button">
+          Submit
+        </button>
+        </form>
         <div className="comment-container">
           {post.comments?.map((comment) => (
             <div key={comment.id} className="comment">
-              {comment.content}-
+              {comment.content}-{comment.user}
             </div>
           ))}
         </div>
