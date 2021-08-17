@@ -1,0 +1,37 @@
+.layout-children {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header {
+  background-image: url("https://i.imgur.com/dKzMgAV.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+.home-header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 40px 30px;
+  margin: 225px 50px 75px 400px;
+  font-family: "Spinnaker", sans-serif;
+  color: white;
+  max-width: 50vw;
+  text-align: center;
+}
+
+.home-button {
+  box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	background-color: #2CBBBB;
+	border: 1px solid #27A0A0;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-family: 'Spinnaker', sans-serif;
+	font-size: 14px;
+	padding: 8px 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}

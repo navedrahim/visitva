@@ -1,0 +1,14 @@
+.post-detail-container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  padding-top: 80px;
+  font-family: "Spinnaker", sans-serif;
+  justify-content: space-evenly;
+  margin-left: 50px;
+}
+
+.post-detail-image {
+  width: 600px;
+  padding: 0 50px;
+}

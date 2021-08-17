@@ -1,13 +1,12 @@
 import { getPost, deletePost } from "../../services/posts";
-import { getComments } from "../../services/comments";
 import { createComment } from "../../services/comments";
 import { useState, useEffect } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
+import "./PostDetail.css"
 import Layout from "../../components/Layout/Layout.jsx";
 
 function PostDetail(props) {
   const [post, setPost] = useState({});
-  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
     content: "",
     user_id: "",
@@ -23,15 +22,7 @@ function PostDetail(props) {
       setPost(post);
     };
     fetchPost();
-  }, [id]);
-
-  useEffect(() => {
-    const fetchComments = async () => {
-      const comments = await getComments(id);
-      setComments(comments);
-    };
-    fetchComments();
-  }, [id]);
+  }, [isCreated]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,14 +36,15 @@ function PostDetail(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const created = await createComment(newComment);
-    setCreated({ created });
+    const created = await createComment(post.id, newComment);
+    console.log(created);
+    setCreated(!isCreated);
+    setNewComment({
+      content: "",
+      user_id: "",
+      post_id: "",
+    });
   };
-
-  if (isCreated) {
-    return <Redirect to={`/posts/${id}`} />;
-  }
-
 
   const handleDelete = async () => {
     await deletePost(post.id);
@@ -84,6 +76,7 @@ function PostDetail(props) {
             Delete
           </button>
         </div>
+        {props.user ? 
         <form className="comment-form" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -93,13 +86,13 @@ function PostDetail(props) {
             onChange={handleChange}
           />
           <button type="submit" className="submit-button">
-          Submit
-        </button>
-        </form>
+            Submit
+          </button>
+        </form>:null}
         <div className="comment-container">
           {post.comments?.map((comment) => (
             <div key={comment.id} className="comment">
-              {comment.content}-{comment.user}
+              {comment.content}-
             </div>
           ))}
         </div>

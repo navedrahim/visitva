@@ -1,3 +1,4 @@
+import "./Layout.css";
 import Nav from "../Nav/Nav.jsx";
 
 const Layout = (props) => (

@@ -2,6 +2,7 @@ import { register } from "../../services/users";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "../../components/Layout/Layout.jsx";
+import "./SignUp.css"
 
 function SignUp(props) {
   const history = useHistory();
