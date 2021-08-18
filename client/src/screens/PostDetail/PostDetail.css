@@ -33,3 +33,9 @@ margin: 10px
 	text-decoration: none;
 	text-transform: uppercase;
 }
+
+@media (max-width: 375px) {
+  .post-detail-image {
+    width: 300px;
+  }
+}
