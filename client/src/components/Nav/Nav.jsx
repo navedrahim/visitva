@@ -3,7 +3,7 @@ import "./Nav.css"
 const Nav = ({ user }) => {
 const authenticatedOptions = (
   <>
-    <h4>{`Hello, ${user?.username}!`}</h4>
+    {/* <h4>{`Hello, ${user?.username}!`}</h4> */}
     <NavLink className="link" to="/add">
       Add Post
     </NavLink>
@@ -40,7 +40,7 @@ const alwaysOptions = (
         </NavLink>
         <div className="nav">
           <div className="links">
-            {alwaysOptions}
+          <h4>{user ? `Hello, ${user?.username}!`: null}</h4>{alwaysOptions}
             {user ? authenticatedOptions : unauthenticatedOptions}
           </div>
         </div>

@@ -61,7 +61,7 @@ const SignIn = (props) => {
             type="text"
             name="username"
             value={username}
-            placeholder="Enter Username"
+            placeholder="Username"
             onChange={handleChange}
           />
           <input

@@ -2,8 +2,15 @@ class CommentsController < ApplicationController
   before_action :authorize_request, only: [:create]
 
   def index
-    @comments = Comment.all
-    render json: @comments
+    # @comments = Comment.all
+    # render json: @comments, include: :user
+    if params[:post_id] 
+      @post = Post.find(params[:post_id])
+      render json: @post.comments, include: :user, status: :ok
+    else
+      @user= User.all
+      render json: @user, include: :comments
+    end
   end
 
   def show
@@ -12,11 +19,21 @@ class CommentsController < ApplicationController
   end
 
   def create
+    # @comment = Comment.new(comment_params)
+    # if @comment.save
+    #   render json: @comment, include: :user, status: :created
+    # else
+    #   render json: @comment, status: :unprocessable_entity
+    # end
+    @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
+    @comment.post = @post
+    @comment.user = @current_user
+
     if @comment.save
-      render json: @comment, status: :created
+      render json: @comment, include: :user, status: :created
     else
-      render json: @comment, status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 

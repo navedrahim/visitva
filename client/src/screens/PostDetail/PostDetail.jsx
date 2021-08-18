@@ -54,7 +54,7 @@ function PostDetail(props) {
   if (deleted) {
     return <Redirect to={"/posts"} />;
   }
-
+  
   return (
     <Layout user={props.user}>
       <div className="post-detail-container">
@@ -92,7 +92,7 @@ function PostDetail(props) {
         <div className="comment-container">
           {post.comments?.map((comment) => (
             <div key={comment.id} className="comment">
-              {comment.content}-
+              {comment.content}
             </div>
           ))}
         </div>

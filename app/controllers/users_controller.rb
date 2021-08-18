@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :authorize_request, only: [:verify]
 
+  def index
+    @users = User.all
+    render json: @users
+  end
+
   def show
     @user = User.find(params[:id])
     render json: @user, status: :ok

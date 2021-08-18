@@ -4,11 +4,16 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    render json: @posts
+    render json: @posts, include: :user, status: :ok
+  end
+
+  def index_user
+    @post = Post.where(user_id: @current_user.id)
+    render json: @post, inlcude: :comments
   end
 
   def show
-    render json: @post, include: :comments
+    render json: @post, include: [:comments, :user]
   end
 
   def create
