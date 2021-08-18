@@ -76,6 +76,7 @@ function PostDetail(props) {
             Delete
           </button>
         </div>
+        Comments
         {props.user ? 
         <form className="comment-form" onSubmit={handleSubmit}>
           <input

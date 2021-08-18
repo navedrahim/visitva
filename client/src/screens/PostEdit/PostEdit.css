@@ -1,0 +1,24 @@
+.post-edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-image {
+  margin-top: 15px;
+  max-width: 30vw;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  align-content: center;
+}
+
+.edit-form button {
+  width: 100px;
+  align-self: center;
+  margin-bottom: 15px;
+}
